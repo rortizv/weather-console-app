@@ -21,4 +21,4 @@ Steps to run the World Weather console app:
 2. Install dependencies:
   - npm i colors
   - npm i inquirer@8.1.2
-  - Open terminal and type: npm start
+3. Open terminal and type: npm start
