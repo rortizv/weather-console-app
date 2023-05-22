@@ -1,3 +1,4 @@
+const axios = require('axios');
 
 class Searches {
     
@@ -8,15 +9,19 @@ class Searches {
     }
 
     async searchByCity(city = '') {
-        console.log({city});
-        // http request
-        return []; // Return the weather of the city that matches the city param
+        try {
+            const { status, data } = await axios.get('https://reqres.in/api/users?page=2');
+            console.log('Response status: ', status);
+            console.log('Data: ', data);
+        } catch (error) {
+            return [];
+        }
     }
 
-    async listHistoricalSearches() {
-        console.log('You have typed historical searches');
-        // TODO: read DB if exists
-    }
+    // async listHistoricalSearches() {
+    //     console.log('You have typed historical searches');
+    //     // TODO: read DB if exists
+    // }
 
 }
 

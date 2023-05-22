@@ -16,7 +16,7 @@ const main = async () => {
             case '1':
                 // Search by city
                 const city = await readInput('Type the city:');
-                searches.searchByCity(city);
+                await searches.searchByCity(city);
                 // Show results
                 // Select place
                 // Weather
@@ -33,7 +33,7 @@ const main = async () => {
 
             case '2':
                 // List historical searches
-                searches.listHistoricalSearches();
+                // searches.listHistoricalSearches();
             break;
 
         }
