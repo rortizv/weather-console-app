@@ -1,7 +1,8 @@
 const axios = require('axios');
+require('dotenv').config();
 
-class Searches {
-    
+
+class Searches {    
     history = ['Bogota', 'Tokyo', 'Napoles'];
     
     constructor() {
@@ -9,19 +10,14 @@ class Searches {
     }
 
     async searchByCity(city = '') {
+        console.log(process.env.WEATHER_API_KEY);
         try {
-            const { status, data } = await axios.get('https://reqres.in/api/users?page=2');
-            console.log('Response status: ', status);
-            console.log('Data: ', data);
+            const resp = await axios.get(`https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/${city}?unitGroup=metric&key=${process.env.WEATHER_API_KEY}&contentType=json`);
+            console.log(resp.data);
         } catch (error) {
             return [];
         }
     }
-
-    // async listHistoricalSearches() {
-    //     console.log('You have typed historical searches');
-    //     // TODO: read DB if exists
-    // }
 
 }
 
