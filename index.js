@@ -1,12 +1,12 @@
 require("colors");
 const { readInput, inquirerMenu, pause } = require("./helpers/inquirer");
 
-const Searches = require("./models/searches");
+const Search = require("./models/search");
 
 const main = async () => {
 
     let opt = '';
-    const searches = new Searches();
+    const search = new Search();
 
     do {
         // Prints menu
@@ -15,20 +15,18 @@ const main = async () => {
         switch (opt) {
             case '1':
                 // Search by city
-                const city = await readInput('Type the city:');
-                await searches.searchByCity(city);
-                // Show results
-                // Select place
-                // Weather
+                const cityToSearch = await readInput('Type the city:');
+                const { city, latitude, longitude, temperature, min, max, description } = await search.searchByCity(cityToSearch);
                 // Save in DB
-
+                console.clear();
                 console.log('\nInformation of the city\n'.green);
-                console.log('City:', );
-                console.log('Lat:', );
-                console.log('Lng:', );
-                console.log('Temperature:', );
-                console.log('Min:', );
-                console.log('Max:', );
+                console.log('City:'.blue, city);
+                console.log('Latitude:'.blue, latitude);
+                console.log('Longitude:'.blue, longitude);
+                console.log('Temperature: '.blue+`${temperature}°C`);
+                console.log('Min: '.blue+`${min}°C`);
+                console.log('Max: '.blue+`${max}°C`);
+                console.log('Description:'.blue, description);
             break;
 
             case '2':
