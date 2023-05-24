@@ -42,6 +42,7 @@ class Search {
         if (this.history.includes(city.toLocaleLowerCase())) {
             return;
         }
+        this.history = this.history.splice(0, 10);
         this.history.unshift(city.toLocaleLowerCase());
         this.saveToDB();
     }
