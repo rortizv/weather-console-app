@@ -18,6 +18,8 @@ const main = async () => {
                 const cityToSearch = await readInput('Type the city:');
                 const { city, latitude, longitude, temperature, min, max, description } = await search.searchByCity(cityToSearch);
                 // Save in DB
+                search.addHistory(city);
+
                 console.clear();
                 console.log('\nInformation of the city\n'.green);
                 console.log('City:'.blue, city);
@@ -31,7 +33,10 @@ const main = async () => {
 
             case '2':
                 // List historical searches
-                // searches.listHistoricalSearches();
+                search.historyCapitalized.forEach( (city, i) => {
+                    const idx = `${i + 1}.`.green;
+                    console.log(`${idx} ${city}`);
+                });
             break;
 
         }
